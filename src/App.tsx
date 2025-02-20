@@ -1,6 +1,6 @@
 import React from "react";
 import TodoForm from "./components/TodoForm";
-import { ContextType, ThemeProvider } from "./context/useContext";
+import { ThemeProvider } from "./context/useContext";
 import { Todo } from "./context/useContext";
 export interface TodoUpdate {
   id: number;

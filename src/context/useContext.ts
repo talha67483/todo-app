@@ -14,10 +14,18 @@ export interface ContextType {
 
 export const TodoContext = createContext({
   todos: [],
-  addTodo: (todo: string) => {},
-  deleteTodo: (id: number) => {},
-  updateTodo: (updateTodo: { id: number; todo: string }) => {},
-  toggleCompleted: (id: number) => {},
+  addTodo: (todo: string) => {
+    todo;
+  },
+  deleteTodo: (id: number) => {
+    id;
+  },
+  updateTodo: (updateTodo: { id: number; todo: string }) => {
+    updateTodo;
+  },
+  toggleCompleted: (id: number) => {
+    id;
+  },
 } as ContextType);
 
 export const useTheme = () => {

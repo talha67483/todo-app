@@ -1,6 +1,6 @@
 import React from "react";
 import { Todo, useTheme } from "../context/useContext";
-import { Save, SquarePen, Trash, Trash2, Turtle } from "lucide-react";
+import { Save, SquarePen, Trash2 } from "lucide-react";
 import { TodoUpdate } from "../App";
 const TodoItem = ({ todos }: { todos: Todo }) => {
   const [todoEdit, setTodoEdit] = React.useState(false);
