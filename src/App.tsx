@@ -2,6 +2,10 @@ import React from "react";
 import TodoForm from "./components/TodoForm";
 import { ContextType, ThemeProvider } from "./context/useContext";
 import { Todo } from "./context/useContext";
+export interface TodoUpdate {
+  id: number;
+  todo: string;
+}
 
 const App = () => {
   const [todos, setTodos] = React.useState<Todo[]>([]);
@@ -11,7 +15,15 @@ const App = () => {
   const deleteTodo = (id: number) => {
     setTodos((prev) => prev.filter((val) => val.id !== id));
   };
-  const updateTodo = () => {};
+  const updateTodo = (todoUpdate: TodoUpdate) => {
+    setTodos(
+      todos.map((prevTodo) =>
+        prevTodo.id === todoUpdate.id
+          ? { ...prevTodo, todo: todoUpdate.todo }
+          : prevTodo
+      )
+    );
+  };
   const toggleCompleted = () => {};
 
   return (
