@@ -24,7 +24,15 @@ const App = () => {
       )
     );
   };
-  const toggleCompleted = () => {};
+  const toggleCompleted = (id: number) => {
+    setTodos(
+      todos.map((prevTodo) =>
+        prevTodo.id === id
+          ? { ...prevTodo, completed: !prevTodo.completed }
+          : prevTodo
+      )
+    );
+  };
 
   return (
     <ThemeProvider

@@ -4,7 +4,7 @@ import { Save, SquarePen, Trash2 } from "lucide-react";
 import { TodoUpdate } from "../App";
 const TodoItem = ({ todos }: { todos: Todo }) => {
   const [todoEdit, setTodoEdit] = React.useState(false);
-  const { deleteTodo, updateTodo } = useTheme();
+  const { deleteTodo, updateTodo, toggleCompleted } = useTheme();
   const [todoMsg, setTodoMsg] = React.useState(todos.todo);
 
   const todoUpdate: TodoUpdate = {
@@ -20,15 +20,26 @@ const TodoItem = ({ todos }: { todos: Todo }) => {
     setTodoEdit(false);
   };
 
+  const toggle = () => {
+    toggleCompleted(todos.id);
+  };
+
   return (
     <div className=" flex justify-center items-center my-2 bg-[#DBE2EF]  h-[45px]  w-[300px] xl:w-[439px] mx-auto rounded-md     ">
-      <input type="checkbox" className=" mx-[10px] " />
+      <input
+        type="checkbox"
+        className=" mx-[10px] "
+        checked={todos.completed}
+        onChange={toggle}
+      />
       <input
         type="text"
         className={` ${
           todoEdit &&
           "border-[1px]  border-[#908c8c] mr-3 rounded-lg h-9 px-2 py-2"
-        }  w-full   outline-none  `}
+        }  w-full   outline-none ${todos.completed && "line-through"} ${
+          todoEdit && " no-underline "
+        }   `}
         value={todoMsg}
         readOnly={!todoEdit}
         onChange={(e) => setTodoMsg(e.target.value)}
